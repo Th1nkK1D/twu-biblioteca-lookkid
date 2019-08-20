@@ -34,4 +34,11 @@ public class BookTest {
 
         assertThat(bookYear, is(2008));
     }
+
+    @Test
+    public void ShouldBeAbleToCheckout() {
+        this.book.checkout();
+
+        assertThat(this.book.getCheckoutStatus(), is(true));
+    }
 }

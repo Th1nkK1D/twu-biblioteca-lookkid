@@ -4,11 +4,13 @@ public class Book {
     private String name;
     private String author;
     private int year;
+    private boolean isCheckout;
 
     public Book(String name, String author, int year) {
         this.name = name;
         this.author = author;
         this.year = year;
+        this.isCheckout = false;
     }
 
     public String getName() {
@@ -21,5 +23,13 @@ public class Book {
 
     public int getYear() {
         return year;
+    }
+
+    public void checkout() {
+        this.isCheckout = true;
+    }
+
+    public boolean getCheckoutStatus() {
+        return isCheckout;
     }
 }
