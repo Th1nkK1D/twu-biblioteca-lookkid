@@ -35,4 +35,23 @@ public class LibraryTest {
 
         assertThat(library.getListOfAllBooksWithNameAuthorAndYear(), is(expectedOutput));
     }
+
+    @Test
+    public void checkedOutBookShouldNotAppearOnListOfAllBooks() {
+        this.library.checkoutBook("Java Basic");
+
+        assertThat(library.getListOfBooksName(), is("How to TDD\n"));
+    }
+
+    @Test
+    public void checkedOutBookShouldNotAppearOnListOfAllBooksWithNameAuthorAndYear() {
+        String expectedOutput =
+                "| name                     | author              | Year Published  |\n" +
+                "| -------------------------|---------------------|-----------------|\n" +
+                "| How to TDD               | James               | 2012            |\n";
+
+        this.library.checkoutBook("Java Basic");
+
+        assertThat(library.getListOfAllBooksWithNameAuthorAndYear(), is(expectedOutput));
+    }
 }

@@ -13,7 +13,9 @@ public class Library {
         String listOfBooksName = "";
 
         for (Book book : this.listOfBooks) {
-            listOfBooksName += String.format("%s\n", book.getName());
+            if (!book.getCheckoutStatus()) {
+                listOfBooksName += String.format("%s\n", book.getName());
+            }
         }
 
         return listOfBooksName;
@@ -25,10 +27,21 @@ public class Library {
                 "| -------------------------|---------------------|-----------------|\n";
 
         for (Book book : this.listOfBooks) {
-            listOfAllBooksWithNameAuthorAndYear +=
-                    String.format("| %-24s | %-19s | %-15s |\n", book.getName(), book.getAuthor(), book.getYear());
+            if (!book.getCheckoutStatus()) {
+                listOfAllBooksWithNameAuthorAndYear +=
+                        String.format("| %-24s | %-19s | %-15s |\n", book.getName(), book.getAuthor(), book.getYear());
+            }
         }
 
         return listOfAllBooksWithNameAuthorAndYear;
+    }
+
+    public void checkoutBook(String bookName) {
+        for(Book book : this.listOfBooks) {
+            if (bookName == book.getName()) {
+                book.checkout();
+                break;
+            }
+        }
     }
 }
