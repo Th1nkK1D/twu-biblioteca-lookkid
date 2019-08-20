@@ -32,4 +32,18 @@ public class MainMenuTest {
 
         assertThat(output, is("Java Basic\n"));
     }
+
+    @Test
+    public void shouldGetNotifyWhenSelectOption0() {
+        String output = mainMenu.selectOption(0);
+
+        assertThat(output, is("Please select a valid option!\n"));
+    }
+
+    @Test
+    public void shouldGetNotifyWhenSelectOption2() {
+        String output = mainMenu.selectOption(2);
+
+        assertThat(output, is("Please select a valid option!\n"));
+    }
 }
