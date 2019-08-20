@@ -39,10 +39,10 @@ public class Library {
     public String checkoutBook(String bookName) {
         for(Book book : this.listOfBooks) {
             if (bookName == book.getName()) {
-                return  book.checkout() ? "Thank you! Enjoy the book" : "";
+                return  book.checkout() ? "Thank you! Enjoy the book" : "Sorry, that book is not available";
             }
         }
 
-        return "";
+        return "Sorry, that book is not available";
     }
 }

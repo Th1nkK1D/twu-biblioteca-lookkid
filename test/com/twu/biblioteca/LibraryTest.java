@@ -68,4 +68,14 @@ public class LibraryTest {
 
         assertThat(message, is("Thank you! Enjoy the book"));
     }
+
+    @Test
+    public void shouldGetUnsuccessfulUnsuccessfulCheckout() {
+        Library library = new Library(this.listOfBooks);
+        library.checkoutBook("Java Basic");
+
+        String message = library.checkoutBook("Java Basic");
+
+        assertThat(message, is("Sorry, that book is not available"));
+    }
 }
