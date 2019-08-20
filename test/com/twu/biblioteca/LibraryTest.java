@@ -22,7 +22,7 @@ public class LibraryTest {
 
     @Test
     public void libraryShouldBeAbleToProvideListOfAllBooks() {
-        assertThat(library.getListOfBooks(), is(this.listOfBooks));
+        assertThat(library.getListOfBooksName(), is("Java Basic\nHow to TDD\n"));
     }
 
     @Test

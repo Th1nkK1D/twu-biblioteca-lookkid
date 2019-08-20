@@ -9,8 +9,14 @@ public class Library {
         this.listOfBooks = listOfBooks;
     }
 
-    public ArrayList<Book> getListOfBooks() {
-        return listOfBooks;
+    public String getListOfBooksName() {
+        String listOfBooksName = "";
+
+        for (Book book : this.listOfBooks) {
+            listOfBooksName += String.format("%s\n", book.getName());
+        }
+
+        return listOfBooksName;
     }
 
     public String getListOfAllBooksWithNameAuthorAndYear() {
