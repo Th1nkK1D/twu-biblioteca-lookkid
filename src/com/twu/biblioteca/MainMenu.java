@@ -14,6 +14,13 @@ public class MainMenu {
     }
 
     public String selectOption(int option) {
-        return option == 1 ? library.getListOfBooksName() : "Please select a valid option!\n";
+        switch (option) {
+            case 0:
+                return "Exit";
+            case 1:
+                return library.getListOfBooksName();
+            default:
+                return "Please select a valid option!";
+        }
     }
 }

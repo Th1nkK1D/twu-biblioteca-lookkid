@@ -16,14 +16,14 @@ public class MainMenuTest {
         ArrayList<Book> listOfBooks = new ArrayList<Book>();
         listOfBooks.add(new Book("Java Basic", "Steve", 2008));
 
-        mainMenu = new MainMenu("1 - List of Books", new Library(listOfBooks));
+        mainMenu = new MainMenu("1 - List of Books\n0 - Quit", new Library(listOfBooks));
     }
 
     @Test
     public void shouldBeAbleToGetListOfOptionsFromMainMenu() {
         String listOfOptions = mainMenu.getListOfOptions();
 
-        assertThat(listOfOptions, is("1 - List of Books"));
+        assertThat(listOfOptions, is("1 - List of Books\n0 - Quit"));
     }
 
     @Test
@@ -33,17 +33,18 @@ public class MainMenuTest {
         assertThat(output, is("Java Basic\n"));
     }
 
-    @Test
-    public void shouldGetNotifyWhenSelectOption0() {
-        String output = mainMenu.selectOption(0);
-
-        assertThat(output, is("Please select a valid option!\n"));
-    }
 
     @Test
     public void shouldGetNotifyWhenSelectOption2() {
         String output = mainMenu.selectOption(2);
 
-        assertThat(output, is("Please select a valid option!\n"));
+        assertThat(output, is("Please select a valid option!"));
+    }
+
+    @Test
+    public void shouldGetExitFlagWhenSelectOption0() {
+        String output = mainMenu.selectOption(0);
+
+        assertThat(output, is("Exit"));
     }
 }
