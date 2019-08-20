@@ -14,8 +14,8 @@ public class LibraryTest {
 
     @Before
     public void setUp() {
-        this.listOfBooks.add(new Book("Java Basic"));
-        this.listOfBooks.add(new Book("How to TDD"));
+        this.listOfBooks.add(new Book("Java Basic", "Steve", 2008));
+        this.listOfBooks.add(new Book("How to TDD", "James", 2012));
 
         this.library  = new Library(this.listOfBooks);
     }
