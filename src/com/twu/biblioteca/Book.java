@@ -25,8 +25,13 @@ public class Book {
         return year;
     }
 
-    public void checkout() {
+    public boolean checkout() {
+        if(this.getCheckoutStatus()) {
+            return false;
+        }
+
         this.isCheckout = true;
+        return true;
     }
 
     public boolean getCheckoutStatus() {

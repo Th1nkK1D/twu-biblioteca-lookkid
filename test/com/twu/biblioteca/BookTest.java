@@ -41,4 +41,13 @@ public class BookTest {
 
         assertThat(this.book.getCheckoutStatus(), is(true));
     }
+
+    @Test
+    public void ShouldGetFalseWhenCheckoutTheBookThatAlreadyCheckedOut() {
+        this.book.checkout();
+
+        boolean result = this.book.checkout();
+
+        assertThat(result, is(false));
+    }
 }

@@ -36,12 +36,13 @@ public class Library {
         return listOfAllBooksWithNameAuthorAndYear;
     }
 
-    public void checkoutBook(String bookName) {
+    public String checkoutBook(String bookName) {
         for(Book book : this.listOfBooks) {
             if (bookName == book.getName()) {
-                book.checkout();
-                break;
+                return  book.checkout() ? "Thank you! Enjoy the book" : "";
             }
         }
+
+        return "";
     }
 }
