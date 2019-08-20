@@ -24,4 +24,15 @@ public class LibraryTest {
     public void libraryShouldBeAbleToProvideListOfAllBooks() {
         assertThat(library.getListOfBooks(), is(this.listOfBooks));
     }
+
+    @Test
+    public void libraryShouldBeAbleToGiveAListOfAllBooksWithNameAuthorAndYear() {
+        String expectedOutput =
+            "| name                     | author              | Year Published  |\n" +
+            "| -------------------------|---------------------|-----------------|\n" +
+            "| Java Basic               | Steve               | 2008            |\n" +
+            "| How to TDD               | James               | 2012            |\n";
+
+        assertThat(library.getListOfAllBooksWithNameAuthorAndYear(), is(expectedOutput));
+    }
 }

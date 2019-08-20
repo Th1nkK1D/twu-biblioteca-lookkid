@@ -12,4 +12,8 @@ public class Library {
     public ArrayList<Book> getListOfBooks() {
         return listOfBooks;
     }
+
+    public String getListOfAllBooksWithNameAuthorAndYear() {
+        return "";
+    }
 }
