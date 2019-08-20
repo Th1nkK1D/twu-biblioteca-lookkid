@@ -14,6 +14,15 @@ public class Library {
     }
 
     public String getListOfAllBooksWithNameAuthorAndYear() {
-        return "";
+        String listOfAllBooksWithNameAuthorAndYear =
+                "| name                     | author              | Year Published  |\n" +
+                "| -------------------------|---------------------|-----------------|\n";
+
+        for (Book book : this.listOfBooks) {
+            listOfAllBooksWithNameAuthorAndYear +=
+                    String.format("| %-24s | %-19s | %-15s |\n", book.getName(), book.getAuthor(), book.getYear());
+        }
+
+        return listOfAllBooksWithNameAuthorAndYear;
     }
 }
