@@ -10,30 +10,36 @@ public class Library {
     }
 
     public String getListOfBooksName() {
-        String listOfBooksName = "";
+        String header = "";
+        BookToStringParser BookNameParser = (Book book) -> String.format("%s\n", book.getName());
 
-        for (Book book : this.listOfBooks) {
-            if (book.getAvailability()) {
-                listOfBooksName += String.format("%s\n", book.getName());
-            }
-        }
-
-        return listOfBooksName;
+        return this.printListOfAllBooks(header, BookNameParser);
     }
 
     public String getListOfAllBooksWithNameAuthorAndYear() {
-        String listOfAllBooksWithNameAuthorAndYear =
+        String header =
                 "| name                     | author              | Year Published  |\n" +
                 "| -------------------------|---------------------|-----------------|\n";
 
+        BookToStringParser BookNameParser = (Book book) -> String.format("| %-24s | %-19s | %-15s |\n", book.getName(), book.getAuthor(), book.getYear());
+
+        return this.printListOfAllBooks(header, BookNameParser);
+    }
+
+    private interface BookToStringParser {
+        public String parse(Book book);
+    }
+
+    private String printListOfAllBooks(String header, BookToStringParser parser) {
+        String listOfAllBook = header;
+
         for (Book book : this.listOfBooks) {
             if (book.getAvailability()) {
-                listOfAllBooksWithNameAuthorAndYear +=
-                        String.format("| %-24s | %-19s | %-15s |\n", book.getName(), book.getAuthor(), book.getYear());
+                listOfAllBook += parser.parse(book);
             }
         }
 
-        return listOfAllBooksWithNameAuthorAndYear;
+        return listOfAllBook;
     }
 
     public String checkoutBook(String bookName) {
