@@ -93,4 +93,13 @@ public class LibraryTest {
 
         assertThat(this.library.getListOfAllBooksWithNameAuthorAndYear(), is(expectedOutput));
     }
+
+    @Test
+    public void shouldGetSuccessMessageOnSuccessfulReturn() {
+        this.library.checkoutBook("Java Basic");
+
+        String message = this.library.returnBook("Java Basic");
+
+        assertThat(message, is("Thank you for returning the book"));
+    }
 }

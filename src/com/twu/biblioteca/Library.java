@@ -46,12 +46,14 @@ public class Library {
         return "Sorry, that book is not available";
     }
 
-    public void returnBook(String bookName) {
+    public String returnBook(String bookName) {
         for(Book book : this.listOfBooks) {
             if (bookName == book.getName()) {
                 book.returnBook();
-                break;
+                return "Thank you for returning the book";
             }
         }
+
+        return "";
     }
 }
