@@ -120,4 +120,19 @@ public class LibraryTest {
     public void libraryShouldBeAbleToProvideListOfAllMovies() {
         assertThat(this.library.getListOfMoviesName(), is("The Avenger\nThe Iron Man\n"));
     }
+
+    @Test
+    public void checkedOutMovieShouldNotAppearOnListOfAllMovies() {
+        this.library.checkoutMovie("The Iron Man");
+
+        assertThat(this.library.getListOfMoviesName(), is("The Avenger\n"));
+    }
+
+    @Test
+    public void returnedMovieShouldAppearOnListOfAllMovies() {
+        this.library.checkoutMovie("The Iron Man");
+        this.library.returnMovie("The Iron Man");
+
+        assertThat(this.library.getListOfMoviesName(), is("The Avenger\nThe Iron Man\n"));
+    }
 }

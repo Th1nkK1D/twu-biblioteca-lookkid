@@ -47,4 +47,12 @@ public class Library {
 
         return this.movieCollection.printListOfAllItems(header, new MovieToStringWithName());
     }
+
+    public boolean checkoutMovie(String movieName) {
+        return movieCollection.checkoutItem(movieName);
+    }
+
+    public boolean returnMovie(String movieName) {
+        return movieCollection.returnItem(movieName);
+    }
 }
