@@ -38,7 +38,12 @@ public class Book {
         return isAvailable;
     }
 
-    public void returnBook() {
+    public boolean returnBook() {
+        if(this.getAvailability()) {
+            return false;
+        }
+
         this.isAvailable = true;
+        return true;
     }
 }

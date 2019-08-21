@@ -59,4 +59,21 @@ public class BookTest {
 
         assertThat(this.book.getAvailability(), is(true));
     }
+
+    @Test
+    public void shouldGetTrueWhenTheBookIsReturned() {
+        this.book.checkout();
+
+        boolean result = this.book.returnBook();
+
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void shouldGetFalseWhenReturnTheBookThatIsNotCheckedOut() {
+        boolean result = this.book.returnBook();
+
+        assertThat(result, is(false));
+    }
+
 }
