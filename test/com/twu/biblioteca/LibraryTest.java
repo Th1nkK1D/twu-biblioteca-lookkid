@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.items.Book;
+import com.twu.biblioteca.items.Movie;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +11,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
-    private ArrayList<Book> listOfBooks = new ArrayList<Book>();
+    private ArrayList<Book> listOfBooks = new ArrayList<>();
+    private ArrayList<Movie> listOfMovies = new ArrayList<>();
     private Library library;
 
     @Before
@@ -18,7 +20,10 @@ public class LibraryTest {
         this.listOfBooks.add(new Book("Java Basic", "Steve", 2008));
         this.listOfBooks.add(new Book("How to TDD", "James", 2012));
 
-        this.library = new Library(this.listOfBooks);
+        this.listOfMovies.add(new Movie("The Avenger", 2011, "Someone", 4));
+        this.listOfMovies.add(new Movie("The Iron Man", 2001, "Another one", 3));
+
+        this.library = new Library(this.listOfBooks, this.listOfMovies);
     }
 
     @Test
@@ -109,5 +114,10 @@ public class LibraryTest {
         String message = this.library.returnBook("C Advance");
 
         assertThat(message, is("That is not a valid book to return"));
+    }
+
+    @Test
+    public void libraryShouldBeAbleToProvideListOfAllMovies() {
+        assertThat(this.library.getListOfMoviesName(), is("The Avenger\nThe Iron Man\n"));
     }
 }

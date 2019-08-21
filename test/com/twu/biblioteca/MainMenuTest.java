@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.items.Book;
+import com.twu.biblioteca.items.Movie;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,10 +15,13 @@ public class MainMenuTest {
 
     @Before
     public void setUp() throws Exception {
-        ArrayList<Book> listOfBooks = new ArrayList<Book>();
-        listOfBooks.add(new Book("Java Basic", "Steve", 2008));
+        ArrayList<Book> listOfBooks = new ArrayList<>();
+        ArrayList<Movie> listOfMovies = new ArrayList<>();
 
-        mainMenu = new MainMenu("1 - List of Books\n0 - Quit", new Library(listOfBooks));
+        listOfBooks.add(new Book("Java Basic", "Steve", 2008));
+        listOfMovies.add(new Movie("The Iron Man", 2001, "Another one", 3));
+
+        mainMenu = new MainMenu("1 - List of Books\n0 - Quit", new Library(listOfBooks, listOfMovies));
     }
 
     @Test

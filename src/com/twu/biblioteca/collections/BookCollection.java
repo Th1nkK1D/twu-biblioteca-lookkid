@@ -1,7 +1,7 @@
 package com.twu.biblioteca.collections;
 
 import com.twu.biblioteca.items.Book;
-import com.twu.biblioteca.parser.ItemToStringParser;
+import com.twu.biblioteca.parser.BookToStringParser;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ public class BookCollection implements Collection {
         this.listOfBooks = listOfBooks;
     }
 
-    public String printListOfAllItems(String header, ItemToStringParser parser) {
+    public String printListOfAllItems(String header, BookToStringParser parser) {
         String listOfAllBook = header;
 
         for (Book book : this.listOfBooks) {
