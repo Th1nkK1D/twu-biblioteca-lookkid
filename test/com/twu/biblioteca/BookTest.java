@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.items.Book;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,41 +38,41 @@ public class BookTest {
 
     @Test
     public void shouldBeAbleToCheckout() {
-        this.book.checkout();
+        this.book.checkoutItem();
 
         assertThat(this.book.getAvailability(), is(false));
     }
 
     @Test
     public void shouldGetFalseWhenCheckoutTheBookThatAlreadyCheckedOut() {
-        this.book.checkout();
+        this.book.checkoutItem();
 
-        boolean result = this.book.checkout();
+        boolean result = this.book.checkoutItem();
 
         assertThat(result, is(false));
     }
 
     @Test
     public void shouldBeAbleToReturn() {
-        this.book.checkout();
+        this.book.checkoutItem();
 
-        this.book.returnBook();
+        this.book.returnItem();
 
         assertThat(this.book.getAvailability(), is(true));
     }
 
     @Test
     public void shouldGetTrueWhenTheBookIsReturned() {
-        this.book.checkout();
+        this.book.checkoutItem();
 
-        boolean result = this.book.returnBook();
+        boolean result = this.book.returnItem();
 
         assertThat(result, is(true));
     }
 
     @Test
     public void shouldGetFalseWhenReturnTheBookThatIsNotCheckedOut() {
-        boolean result = this.book.returnBook();
+        boolean result = this.book.returnItem();
 
         assertThat(result, is(false));
     }

@@ -1,6 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.items;
 
-public class Book {
+import com.twu.biblioteca.items.Item;
+
+public class Book implements Item {
     private String name;
     private String author;
     private int year;
@@ -25,7 +27,11 @@ public class Book {
         return year;
     }
 
-    public boolean checkout() {
+    public boolean getAvailability() {
+        return isAvailable;
+    }
+
+    public boolean checkoutItem() {
         if(!this.getAvailability()) {
             return false;
         }
@@ -34,11 +40,7 @@ public class Book {
         return true;
     }
 
-    public boolean getAvailability() {
-        return isAvailable;
-    }
-
-    public boolean returnBook() {
+    public boolean returnItem() {
         if(this.getAvailability()) {
             return false;
         }
