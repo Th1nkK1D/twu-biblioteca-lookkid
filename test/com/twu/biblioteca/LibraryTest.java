@@ -102,4 +102,11 @@ public class LibraryTest {
 
         assertThat(message, is("Thank you for returning the book"));
     }
+
+    @Test
+    public void shouldGetUnsuccessfulMessageOnUnsuccessfulReturn() {
+        String message = this.library.returnBook("C Advance");
+
+        assertThat(message, is("That is not a valid book to return"));
+    }
 }

@@ -49,11 +49,10 @@ public class Library {
     public String returnBook(String bookName) {
         for(Book book : this.listOfBooks) {
             if (bookName == book.getName()) {
-                book.returnBook();
-                return "Thank you for returning the book";
+                return book.returnBook() ? "Thank you for returning the book" : "That is not a valid book to return";
             }
         }
 
-        return "";
+        return "That is not a valid book to return";
     }
 }
