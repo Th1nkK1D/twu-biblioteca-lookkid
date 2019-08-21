@@ -1,6 +1,6 @@
 package com.twu.biblioteca.items;
 
-public class Movie implements Item {
+public class Movie extends Item {
     private String name;
     private int year;
     private String director;
@@ -8,15 +8,11 @@ public class Movie implements Item {
     private boolean isAvailable;
 
     public Movie(String name, int year, String director, int rating) {
-        this.name = name;
+        super(name);
+
         this.year = year;
         this.director = director;
         this.rating = rating;
-        this.isAvailable = true;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getDirector() {
@@ -29,27 +25,5 @@ public class Movie implements Item {
 
     public int getRating() {
         return rating;
-    }
-
-    public boolean getAvailability() {
-        return isAvailable;
-    }
-
-    public boolean checkoutItem() {
-        if(!this.isAvailable) {
-            return false;
-        }
-
-        this.isAvailable = false;
-        return true;
-    }
-
-    public boolean returnItem() {
-        if(this.isAvailable) {
-            return false;
-        }
-
-        this.isAvailable = true;
-        return true;
     }
 }

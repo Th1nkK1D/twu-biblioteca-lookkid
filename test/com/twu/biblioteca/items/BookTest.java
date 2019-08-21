@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.items;
 
 import com.twu.biblioteca.items.Book;
 import org.junit.Before;
