@@ -4,13 +4,13 @@ public class Book {
     private String name;
     private String author;
     private int year;
-    private boolean isCheckout;
+    private boolean isAvailable;
 
     public Book(String name, String author, int year) {
         this.name = name;
         this.author = author;
         this.year = year;
-        this.isCheckout = false;
+        this.isAvailable = true;
     }
 
     public String getName() {
@@ -26,19 +26,19 @@ public class Book {
     }
 
     public boolean checkout() {
-        if(this.getCheckoutStatus()) {
+        if(!this.getAvailability()) {
             return false;
         }
 
-        this.isCheckout = true;
+        this.isAvailable = false;
         return true;
     }
 
-    public boolean getCheckoutStatus() {
-        return isCheckout;
+    public boolean getAvailability() {
+        return isAvailable;
     }
 
     public void returnBook() {
-        this.isCheckout = false;
+        this.isAvailable = true;
     }
 }

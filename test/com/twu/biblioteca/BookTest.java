@@ -39,7 +39,7 @@ public class BookTest {
     public void shouldBeAbleToCheckout() {
         this.book.checkout();
 
-        assertThat(this.book.getCheckoutStatus(), is(true));
+        assertThat(this.book.getAvailability(), is(false));
     }
 
     @Test
@@ -57,6 +57,6 @@ public class BookTest {
 
         this.book.returnBook();
 
-        assertThat(this.book.getCheckoutStatus(), is(false));
+        assertThat(this.book.getAvailability(), is(true));
     }
 }
