@@ -70,4 +70,27 @@ public class LibraryTest {
 
         assertThat(message, is("Sorry, that book is not available"));
     }
+
+    @Test
+    public void returnedBookShouldAppearOnListOfAllBooks() {
+        this.library.checkoutBook("Java Basic");
+        this.library.returnBook("Java Basic");
+
+        assertThat(this.library.getListOfBooksName(), is("Java Basic\nHow to TDD\n"));
+    }
+
+    @Test
+    public void returnedBookShouldAppearOnListOfAllBooksWithNameAuthorAndYear() {
+        String expectedOutput =
+                "| name                     | author              | Year Published  |\n" +
+                "| -------------------------|---------------------|-----------------|\n" +
+                "| Java Basic               | Steve               | 2008            |\n" +
+                "| How to TDD               | James               | 2012            |\n";
+
+        this.library.checkoutBook("Java Basic");
+
+        this.library.returnBook("Java Basic");
+
+        assertThat(this.library.getListOfAllBooksWithNameAuthorAndYear(), is(expectedOutput));
+    }
 }
