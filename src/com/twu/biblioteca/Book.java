@@ -37,4 +37,8 @@ public class Book {
     public boolean getCheckoutStatus() {
         return isCheckout;
     }
+
+    public void returnBook() {
+        this.isCheckout = false;
+    }
 }

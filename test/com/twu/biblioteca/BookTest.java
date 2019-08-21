@@ -36,18 +36,27 @@ public class BookTest {
     }
 
     @Test
-    public void ShouldBeAbleToCheckout() {
+    public void shouldBeAbleToCheckout() {
         this.book.checkout();
 
         assertThat(this.book.getCheckoutStatus(), is(true));
     }
 
     @Test
-    public void ShouldGetFalseWhenCheckoutTheBookThatAlreadyCheckedOut() {
+    public void shouldGetFalseWhenCheckoutTheBookThatAlreadyCheckedOut() {
         this.book.checkout();
 
         boolean result = this.book.checkout();
 
         assertThat(result, is(false));
+    }
+
+    @Test
+    public void shouldBeAbleToReturn() {
+        this.book.checkout();
+
+        this.book.returnBook();
+
+        assertThat(this.book.getCheckoutStatus(), is(false));
     }
 }
