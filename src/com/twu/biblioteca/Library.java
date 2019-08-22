@@ -38,7 +38,7 @@ public class Library {
     }
 
     public String checkoutBook(String bookName) {
-        return bookCollection.checkoutItem(bookName) ? "Thank you! Enjoy the book" : "Sorry, that book is not available";
+        return bookCollection.checkoutItem(bookName, this.loggedInUser) ? "Thank you! Enjoy the book" : "Sorry, that book is not available";
     }
 
     public String returnBook(String bookName) {
@@ -51,12 +51,12 @@ public class Library {
         return this.movieCollection.printListOfAllItems(header, new MovieToStringWithName());
     }
 
-    public boolean checkoutMovie(String movieName) {
-        return movieCollection.checkoutItem(movieName);
+    public String checkoutMovie(String movieName) {
+        return movieCollection.checkoutItem(movieName, this.loggedInUser) ? "Thank you! Enjoy the movie" : "Sorry, that movie is not available";
     }
 
-    public boolean returnMovie(String movieName) {
-        return movieCollection.returnItem(movieName);
+    public String returnMovie(String movieName) {
+        return movieCollection.returnItem(movieName) ? "Thank you for returning the movie" : "That is not a valid movie to return";
     }
 
     public void login(String user, String pass) {
