@@ -38,6 +38,9 @@ public class Library {
     }
 
     public String checkoutBook(String bookName) {
+        if (!this.isUserLoggedIn()) {
+            return "Please log in first";
+        }
         return bookCollection.checkoutItem(bookName, this.loggedInUser) ? "Thank you! Enjoy the book" : "Sorry, that book is not available";
     }
 
@@ -52,6 +55,9 @@ public class Library {
     }
 
     public String checkoutMovie(String movieName) {
+        if (!this.isUserLoggedIn()) {
+            return "Please log in first";
+        }
         return movieCollection.checkoutItem(movieName, this.loggedInUser) ? "Thank you! Enjoy the movie" : "Sorry, that movie is not available";
     }
 
@@ -67,5 +73,9 @@ public class Library {
 
     public String getLoggedInUser() {
         return this.loggedInUser;
+    }
+
+    private boolean isUserLoggedIn() {
+        return this.getLoggedInUser().length() > 0;
     }
 }

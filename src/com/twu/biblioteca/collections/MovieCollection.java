@@ -24,10 +24,10 @@ public class MovieCollection {
         return listOfAllMovie;
     }
 
-    public boolean checkoutItem(String movieName) {
+    public boolean checkoutItem(String movieName, String borrower) {
         for(Movie movie : this.listOfMovies) {
             if (movieName == movie.getName()) {
-                return movie.checkoutItem("");
+                return movie.checkoutItem(borrower);
             }
         }
 

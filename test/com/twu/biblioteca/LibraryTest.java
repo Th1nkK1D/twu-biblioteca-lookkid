@@ -15,8 +15,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
-    private ArrayList<Book> listOfBooks = new ArrayList<>();
-    private ArrayList<Movie> listOfMovies = new ArrayList<>();
     private Library library;
 
     @Before
@@ -53,6 +51,7 @@ public class LibraryTest {
 
     @Test
     public void checkedOutBookShouldNotAppearOnListOfAllBooks() {
+        this.library.login("John", "123-4567");
         this.library.checkoutBook("Java Basic");
 
         assertThat(this.library.getListOfBooksName(), is("How to TDD\n"));
@@ -65,6 +64,7 @@ public class LibraryTest {
                 "| -------------------------|---------------------|-----------------|\n" +
                 "| How to TDD               | James               | 2012            |\n";
 
+        this.library.login("John", "123-4567");
         this.library.checkoutBook("Java Basic");
 
         assertThat(this.library.getListOfAllBooksWithNameAuthorAndYear(), is(expectedOutput));
@@ -72,6 +72,7 @@ public class LibraryTest {
 
     @Test
     public void shouldGetSuccessMessageOnSuccessCheckout() {
+        this.library.login("John", "123-4567");
         String message = this.library.checkoutBook("Java Basic");
 
         assertThat(message, is("Thank you! Enjoy the book"));
@@ -79,6 +80,7 @@ public class LibraryTest {
 
     @Test
     public void shouldGetUnsuccessfulUnsuccessfulCheckout() {
+        this.library.login("John", "123-4567");
         this.library.checkoutBook("Java Basic");
 
         String message = this.library.checkoutBook("Java Basic");
@@ -88,6 +90,7 @@ public class LibraryTest {
 
     @Test
     public void returnedBookShouldAppearOnListOfAllBooks() {
+        this.library.login("John", "123-4567");
         this.library.checkoutBook("Java Basic");
         this.library.returnBook("Java Basic");
 
@@ -102,6 +105,7 @@ public class LibraryTest {
                 "| Java Basic               | Steve               | 2008            |\n" +
                 "| How to TDD               | James               | 2012            |\n";
 
+        this.library.login("John", "123-4567");
         this.library.checkoutBook("Java Basic");
 
         this.library.returnBook("Java Basic");
@@ -111,6 +115,7 @@ public class LibraryTest {
 
     @Test
     public void shouldGetSuccessMessageOnSuccessfulReturn() {
+        this.library.login("John", "123-4567");
         this.library.checkoutBook("Java Basic");
 
         String message = this.library.returnBook("Java Basic");
@@ -132,6 +137,7 @@ public class LibraryTest {
 
     @Test
     public void checkedOutMovieShouldNotAppearOnListOfAllMovies() {
+        this.library.login("John", "123-4567");
         this.library.checkoutMovie("The Iron Man");
 
         assertThat(this.library.getListOfMoviesName(), is("The Avenger\n"));
@@ -150,5 +156,19 @@ public class LibraryTest {
         this.library.login("John", "123-4567");
 
         assertThat(this.library.getLoggedInUser(), is("John"));
+    }
+
+    @Test
+    public void shouldGetUnsuccessfulMessageForCheckoutBookWithoutLoggedIn() {
+        String message = this.library.checkoutBook("Java Basic");
+
+        assertThat(message, is("Please log in first"));
+    }
+
+    @Test
+    public void shouldGetUnsuccessfulMessageForCheckoutMovieWithoutLoggedIn() {
+        String message = this.library.checkoutMovie("The Avenger");
+
+        assertThat(message, is("Please log in first"));
     }
 }

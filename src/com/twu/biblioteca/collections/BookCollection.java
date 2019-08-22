@@ -24,10 +24,10 @@ public class BookCollection implements Collection {
         return listOfAllBook;
     }
 
-    public boolean checkoutItem(String bookName) {
+    public boolean checkoutItem(String bookName, String borrower) {
         for(Book book : this.listOfBooks) {
             if (bookName == book.getName()) {
-                return book.checkoutItem("");
+                return book.checkoutItem(borrower);
             }
         }
 
