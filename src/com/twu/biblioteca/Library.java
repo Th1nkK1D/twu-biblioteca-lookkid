@@ -1,9 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.collections.AccountManager;
 import com.twu.biblioteca.collections.BookCollection;
 import com.twu.biblioteca.collections.MovieCollection;
-import com.twu.biblioteca.items.Book;
-import com.twu.biblioteca.items.Movie;
 import com.twu.biblioteca.parser.BookToStringWithName;
 import com.twu.biblioteca.parser.BookToStringWithNameAuthorYear;
 import com.twu.biblioteca.parser.MovieToStringWithName;
@@ -11,12 +10,16 @@ import com.twu.biblioteca.parser.MovieToStringWithName;
 import java.util.ArrayList;
 
 public class Library {
+    private AccountManager accountManager;
     private BookCollection bookCollection;
     private MovieCollection movieCollection;
+    private String loggedInUser;
 
-    public Library(ArrayList<Book> listOfBooks, ArrayList<Movie> listOfMovies) {
-        this.bookCollection = new BookCollection(listOfBooks);
-        this.movieCollection = new MovieCollection(listOfMovies);
+    public Library(AccountManager accountManager, BookCollection bookCollection, MovieCollection movieCollection) {
+        this.accountManager = accountManager;
+        this.bookCollection = bookCollection;
+        this.movieCollection = movieCollection;
+        this.loggedInUser = "";
     }
 
     public String getListOfBooksName() {

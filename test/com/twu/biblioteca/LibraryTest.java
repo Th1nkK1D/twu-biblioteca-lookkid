@@ -1,11 +1,15 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.collections.AccountManager;
+import com.twu.biblioteca.collections.BookCollection;
+import com.twu.biblioteca.collections.MovieCollection;
 import com.twu.biblioteca.items.Book;
 import com.twu.biblioteca.items.Movie;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -17,13 +21,18 @@ public class LibraryTest {
 
     @Before
     public void setUp() {
-        this.listOfBooks.add(new Book("Java Basic", "Steve", 2008));
-        this.listOfBooks.add(new Book("How to TDD", "James", 2012));
+        TreeMap<String, String> accounts = new TreeMap<>();
+        accounts.put("user", "123-4567");
 
-        this.listOfMovies.add(new Movie("The Avenger", 2011, "Someone", 4));
-        this.listOfMovies.add(new Movie("The Iron Man", 2001, "Another one", 3));
+        ArrayList<Book> listOfBooks = new ArrayList<>();
+        listOfBooks.add(new Book("Java Basic", "Steve", 2008));
+        listOfBooks.add(new Book("How to TDD", "James", 2012));
 
-        this.library = new Library(this.listOfBooks, this.listOfMovies);
+        ArrayList<Movie> listOfMovies = new ArrayList<>();
+        listOfMovies.add(new Movie("The Avenger", 2011, "Someone", 4));
+        listOfMovies.add(new Movie("The Iron Man", 2001, "Another one", 3));
+
+        this.library = new Library(new AccountManager(accounts), new BookCollection(listOfBooks), new MovieCollection(listOfMovies));
     }
 
     @Test
