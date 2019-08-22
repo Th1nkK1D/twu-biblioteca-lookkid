@@ -58,4 +58,14 @@ public class Library {
     public boolean returnMovie(String movieName) {
         return movieCollection.returnItem(movieName);
     }
+
+    public void login(String user, String pass) {
+        if(this.accountManager.authenticate(user, pass)) {
+            this.loggedInUser = user;
+        }
+    }
+
+    public String getLoggedInUser() {
+        return this.loggedInUser;
+    }
 }

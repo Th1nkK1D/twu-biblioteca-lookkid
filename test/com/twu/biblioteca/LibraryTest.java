@@ -22,7 +22,7 @@ public class LibraryTest {
     @Before
     public void setUp() {
         TreeMap<String, String> accounts = new TreeMap<>();
-        accounts.put("user", "123-4567");
+        accounts.put("John", "123-4567");
 
         ArrayList<Book> listOfBooks = new ArrayList<>();
         listOfBooks.add(new Book("Java Basic", "Steve", 2008));
@@ -143,5 +143,12 @@ public class LibraryTest {
         this.library.returnMovie("The Iron Man");
 
         assertThat(this.library.getListOfMoviesName(), is("The Avenger\nThe Iron Man\n"));
+    }
+
+    @Test
+    public void userShouldBeAbleToLogin() {
+        this.library.login("John", "123-4567");
+
+        assertThat(this.library.getLoggedInUser(), is("John"));
     }
 }
