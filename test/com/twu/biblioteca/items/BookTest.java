@@ -38,23 +38,23 @@ public class BookTest {
 
     @Test
     public void shouldBeAbleToCheckout() {
-        this.book.checkoutItem();
+        this.book.checkoutItem("John");
 
         assertThat(this.book.getAvailability(), is(false));
     }
 
     @Test
     public void shouldGetFalseWhenCheckoutTheBookThatAlreadyCheckedOut() {
-        this.book.checkoutItem();
+        this.book.checkoutItem("John");
 
-        boolean result = this.book.checkoutItem();
+        boolean result = this.book.checkoutItem("John");
 
         assertThat(result, is(false));
     }
 
     @Test
     public void shouldBeAbleToReturn() {
-        this.book.checkoutItem();
+        this.book.checkoutItem("John");
 
         this.book.returnItem();
 
@@ -63,7 +63,7 @@ public class BookTest {
 
     @Test
     public void shouldGetTrueWhenTheBookIsReturned() {
-        this.book.checkoutItem();
+        this.book.checkoutItem("John");
 
         boolean result = this.book.returnItem();
 

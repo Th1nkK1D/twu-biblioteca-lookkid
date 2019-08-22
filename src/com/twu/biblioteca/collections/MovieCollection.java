@@ -27,7 +27,7 @@ public class MovieCollection {
     public boolean checkoutItem(String movieName) {
         for(Movie movie : this.listOfMovies) {
             if (movieName == movie.getName()) {
-                return movie.checkoutItem();
+                return movie.checkoutItem("");
             }
         }
 

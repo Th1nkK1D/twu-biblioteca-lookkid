@@ -2,11 +2,11 @@ package com.twu.biblioteca.items;
 
 public class Item {
     private String name;
-    private boolean isAvailable;
+    private String borrower;
 
     public Item(String name) {
         this.name = name;
-        this.isAvailable = true;
+        this.borrower = "";
     }
 
     public String getName() {
@@ -14,24 +14,28 @@ public class Item {
     }
 
     public boolean getAvailability() {
-        return isAvailable;
+        return this.borrower.length() == 0;
     }
 
-    public boolean checkoutItem() {
-        if(!this.isAvailable) {
+    public String getBorrower() {
+        return this.borrower;
+    }
+
+    public boolean checkoutItem(String borrower) {
+        if(!this.getAvailability()) {
             return false;
         }
 
-        this.isAvailable = false;
+        this.borrower = borrower;
         return true;
     }
 
     public boolean returnItem() {
-        if(this.isAvailable) {
+        if(this.getAvailability()) {
             return false;
         }
 
-        this.isAvailable = true;
+        this.borrower = "";
         return true;
     }
 }

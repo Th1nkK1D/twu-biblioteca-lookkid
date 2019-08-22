@@ -27,7 +27,7 @@ public class BookCollection implements Collection {
     public boolean checkoutItem(String bookName) {
         for(Book book : this.listOfBooks) {
             if (bookName == book.getName()) {
-                return book.checkoutItem();
+                return book.checkoutItem("");
             }
         }
 

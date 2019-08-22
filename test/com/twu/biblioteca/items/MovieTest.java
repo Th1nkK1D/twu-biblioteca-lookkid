@@ -37,23 +37,23 @@ public class MovieTest {
 
     @Test
     public void shouldBeAbleToCheckout() {
-        this.movie.checkoutItem();
+        this.movie.checkoutItem("John");
 
         assertThat(this.movie.getAvailability(), is(false));
     }
 
     @Test
     public void shouldGetFalseWhenCheckoutTheMovieThatAlreadyCheckedOut() {
-        this.movie.checkoutItem();
+        this.movie.checkoutItem("John");
 
-        boolean result = this.movie.checkoutItem();
+        boolean result = this.movie.checkoutItem("John");
 
         assertThat(result, is(false));
     }
 
     @Test
     public void shouldBeAbleToReturn() {
-        this.movie.checkoutItem();
+        this.movie.checkoutItem("John");
 
         this.movie.returnItem();
 
@@ -62,7 +62,7 @@ public class MovieTest {
 
     @Test
     public void shouldGetTrueWhenTheMovieIsReturned() {
-        this.movie.checkoutItem();
+        this.movie.checkoutItem("John");
 
         boolean result = this.movie.returnItem();
 
