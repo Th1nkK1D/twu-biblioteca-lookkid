@@ -3,11 +3,6 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.collections.AccountManager;
 import com.twu.biblioteca.collections.BookCollection;
 import com.twu.biblioteca.collections.MovieCollection;
-import com.twu.biblioteca.parser.BookToStringWithName;
-import com.twu.biblioteca.parser.BookToStringWithNameAuthorYear;
-import com.twu.biblioteca.parser.MovieToStringWithName;
-
-import java.util.ArrayList;
 
 public class Library {
     private AccountManager accountManager;
@@ -23,18 +18,12 @@ public class Library {
     }
 
     public String getListOfBooksName() {
-        String header = "";
-
-        return this.bookCollection.printListOfAllItems(header, new BookToStringWithName());
+        return this.bookCollection.getListOfAvailableItems();
 
     }
 
     public String getListOfAllBooksWithNameAuthorAndYear() {
-        String header =
-                "| name                     | author              | Year Published  |\n" +
-                "| -------------------------|---------------------|-----------------|\n";
-
-        return this.bookCollection.printListOfAllItems(header, new BookToStringWithNameAuthorYear());
+        return this.bookCollection.getListOfAvailableItemsWithDetails();
     }
 
     public String checkoutBook(String bookName) {
@@ -51,7 +40,7 @@ public class Library {
     public String getListOfMoviesName() {
         String header = "";
 
-        return this.movieCollection.printListOfAllItems(header, new MovieToStringWithName());
+        return this.movieCollection.getListOfAvailableItems();
     }
 
     public String checkoutMovie(String movieName) {

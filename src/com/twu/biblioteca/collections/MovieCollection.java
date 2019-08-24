@@ -2,6 +2,7 @@ package com.twu.biblioteca.collections;
 
 import com.twu.biblioteca.items.Movie;
 import com.twu.biblioteca.parser.MovieToStringParser;
+import com.twu.biblioteca.parser.MovieToStringWithName;
 
 import java.util.ArrayList;
 
@@ -10,18 +11,6 @@ public class MovieCollection {
 
     public MovieCollection(ArrayList<Movie> listOfMovies) {
         this.listOfMovies = listOfMovies;
-    }
-
-    public String printListOfAllItems(String header, MovieToStringParser parser) {
-        String listOfAllMovie = header;
-
-        for (Movie movie : this.listOfMovies) {
-            if (movie.getAvailability()) {
-                listOfAllMovie += parser.parse(movie);
-            }
-        }
-
-        return listOfAllMovie;
     }
 
     public boolean checkoutItem(String movieName, String borrower) {
@@ -42,5 +31,27 @@ public class MovieCollection {
         }
 
         return false;
+    }
+
+    public String getListOfAvailableItems() {
+        String header = "";
+
+        return this.printListOfAllItems(header, new MovieToStringWithName());
+    }
+
+    public String getListOfAvailableItemsWithDetails() {
+        return "";
+    }
+
+    private String printListOfAllItems(String header, MovieToStringParser parser) {
+        String listOfAllMovie = header;
+
+        for (Movie movie : this.listOfMovies) {
+            if (movie.getAvailability()) {
+                listOfAllMovie += parser.parse(movie);
+            }
+        }
+
+        return listOfAllMovie;
     }
 }
