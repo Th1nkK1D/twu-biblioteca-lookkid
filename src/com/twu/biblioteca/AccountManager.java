@@ -3,16 +3,16 @@ package com.twu.biblioteca;
 import java.util.TreeMap;
 
 public class AccountManager {
-    private TreeMap<String, String> accounts;
+    private TreeMap<String, Account> accounts;
 
-    public AccountManager(TreeMap<String, String> accounts) {
+    public AccountManager(TreeMap<String, Account> accounts) {
         this.accounts = accounts;
     }
     
-    public boolean authenticate(String user, String pass) {
-        String savedPass = this.accounts.get(user);
+    public boolean authenticate(String libraryNumber, String pass) {
+        Account account = this.accounts.get(libraryNumber);
 
-        if(this.accounts.get(user) != null && pass == savedPass) {
+        if(account != null && account.validate(libraryNumber, pass)) {
             return true;
         }
 

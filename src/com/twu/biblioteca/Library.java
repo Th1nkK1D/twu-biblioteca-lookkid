@@ -53,9 +53,9 @@ public class Library {
         return movieCollection.returnItem(movieName) ? "Thank you for returning the movie" : "That is not a valid movie to return";
     }
 
-    public void login(String user, String pass) {
-        if(this.accountManager.authenticate(user, pass)) {
-            this.loggedInUser = user;
+    public void login(String libraryNumber, String pass) {
+        if(this.accountManager.authenticate(libraryNumber, pass)) {
+            this.loggedInUser = libraryNumber;
         }
     }
 

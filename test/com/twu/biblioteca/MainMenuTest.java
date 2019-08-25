@@ -18,8 +18,8 @@ public class MainMenuTest {
 
     @Before
     public void setUp() throws Exception {
-        TreeMap<String, String> accounts = new TreeMap<>();
-        accounts.put("user", "123-4567");
+        TreeMap<String, Account> accounts = new TreeMap<>();
+        accounts.put("123-4567", new Account("123-4567","John", "password", "test@mail.com", "0862389627"));
 
         ArrayList<Book> listOfBooks = new ArrayList<>();
         listOfBooks.add(new Book("Java Basic", "Steve", 2008));
@@ -45,7 +45,7 @@ public class MainMenuTest {
     public void shouldBeAbleToGetListOfBookWhenSelectOption1() {
         String output = mainMenu.selectOption(1);
 
-        assertThat(output, is("Java Basic\n"));
+        assertThat(output, is("Java Basic\nHow to TDD\n"));
     }
 
 

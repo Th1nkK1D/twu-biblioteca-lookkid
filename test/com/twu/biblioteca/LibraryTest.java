@@ -18,8 +18,8 @@ public class LibraryTest {
 
     @Before
     public void setUp() {
-        TreeMap<String, String> accounts = new TreeMap<>();
-        accounts.put("John", "123-4567");
+        TreeMap<String, Account> accounts = new TreeMap<>();
+        accounts.put("123-4567", new Account("123-4567","John", "password", "test@mail.com", "0862389627"));
 
         ArrayList<Book> listOfBooks = new ArrayList<>();
         listOfBooks.add(new Book("Java Basic", "Steve", 2008));
@@ -50,7 +50,7 @@ public class LibraryTest {
 
     @Test
     public void checkedOutBookShouldNotAppearOnListOfAllBooks() {
-        this.library.login("John", "123-4567");
+        this.library.login("123-4567", "password");
         this.library.checkoutBook("Java Basic");
 
         assertThat(this.library.getListOfBooksName(), is("How to TDD\n"));
@@ -63,7 +63,7 @@ public class LibraryTest {
                 "| -------------------------|---------------------|-----------------|\n" +
                 "| How to TDD               | James               | 2012            |\n";
 
-        this.library.login("John", "123-4567");
+        this.library.login("123-4567", "password");
         this.library.checkoutBook("Java Basic");
 
         assertThat(this.library.getListOfAllBooksWithNameAuthorAndYear(), is(expectedOutput));
@@ -71,7 +71,7 @@ public class LibraryTest {
 
     @Test
     public void shouldGetSuccessMessageOnSuccessCheckout() {
-        this.library.login("John", "123-4567");
+        this.library.login("123-4567", "password");
         String message = this.library.checkoutBook("Java Basic");
 
         assertThat(message, is("Thank you! Enjoy the book"));
@@ -79,7 +79,7 @@ public class LibraryTest {
 
     @Test
     public void shouldGetUnsuccessfulUnsuccessfulCheckout() {
-        this.library.login("John", "123-4567");
+        this.library.login("123-4567", "password");
         this.library.checkoutBook("Java Basic");
 
         String message = this.library.checkoutBook("Java Basic");
@@ -89,7 +89,7 @@ public class LibraryTest {
 
     @Test
     public void returnedBookShouldAppearOnListOfAllBooks() {
-        this.library.login("John", "123-4567");
+        this.library.login("123-4567", "password");
         this.library.checkoutBook("Java Basic");
         this.library.returnBook("Java Basic");
 
@@ -104,7 +104,7 @@ public class LibraryTest {
                 "| Java Basic               | Steve               | 2008            |\n" +
                 "| How to TDD               | James               | 2012            |\n";
 
-        this.library.login("John", "123-4567");
+        this.library.login("123-4567", "password");
         this.library.checkoutBook("Java Basic");
 
         this.library.returnBook("Java Basic");
@@ -114,7 +114,7 @@ public class LibraryTest {
 
     @Test
     public void shouldGetSuccessMessageOnSuccessfulReturn() {
-        this.library.login("John", "123-4567");
+        this.library.login("123-4567", "password");
         this.library.checkoutBook("Java Basic");
 
         String message = this.library.returnBook("Java Basic");
@@ -136,7 +136,7 @@ public class LibraryTest {
 
     @Test
     public void checkedOutMovieShouldNotAppearOnListOfAllMovies() {
-        this.library.login("John", "123-4567");
+        this.library.login("123-4567", "password");
         this.library.checkoutMovie("The Iron Man");
 
         assertThat(this.library.getListOfMoviesName(), is("The Avenger\n"));
@@ -152,9 +152,9 @@ public class LibraryTest {
 
     @Test
     public void userShouldBeAbleToLogin() {
-        this.library.login("John", "123-4567");
+        this.library.login("123-4567", "password");
 
-        assertThat(this.library.getLoggedInUser(), is("John"));
+        assertThat(this.library.getLoggedInUser(), is("123-4567"));
     }
 
     @Test
