@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.collections.AccountManager;
 import com.twu.biblioteca.collections.BookCollection;
 import com.twu.biblioteca.collections.MovieCollection;
 

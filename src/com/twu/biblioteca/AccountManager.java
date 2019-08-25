@@ -1,4 +1,4 @@
-package com.twu.biblioteca.collections;
+package com.twu.biblioteca;
 
 import java.util.TreeMap;
 
